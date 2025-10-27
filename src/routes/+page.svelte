@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { fly, slide } from "svelte/transition";
+    import { cubicInOut } from "svelte/easing";
 
     import { base } from "$app/paths";
 
@@ -9,34 +10,39 @@
 
     onMount(function() {
       setTimeout(function() {toggle = true}, 100);
-      setTimeout(function() {toggle2 = true}, 3000); 
-      setTimeout(function() {window.location.href= path + "/onedigit"}) 
+
+      if (localStorage.getItem("oneStreak") == null) {
+        localStorage.setItem("oneStreak", 0);
+        localStorage.setItem("twoStreak", 0);
+        localStorage.setItem("threeStreak", 0);
+      }
     })
 </script>
 <style>
-    h1 {
+    #title {
         font-weight: 900;
         font-size: 80px;
-        animation: flash 2s infinite;
         user-select: none;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
+        animation: title 2s infinite;
     }
+
     .mental {
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
     }
-    @keyframes flash {
+    @keyframes title {
         0% {
-            color: black;
+            transform: translateY(0);
         }
         50% {
-            color: purple;
+            transform: translateY(-10px);
         }
         100% {
-            color: black;
+            transform: translateY(0);
         }
     }
 
@@ -47,20 +53,49 @@
         bottom: 0;
         right: 0;
         left: 0;
-        height: 75%;
+        height: 110%;
         border-top-right-radius: 20px;
         border-top-left-radius: 20px;
+    }
+
+    table {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+
+        button {
+            font-size: 80px;
+            padding: 25px;
+            padding-left: 60px;
+            padding-right: 60px;
+        }
     }
 </style>
 
 {#if toggle} 
-    <h1 transition:slide>MENTAL</h1>
-    <h3 class="mental" transition:fly={{ y: 100, delay: 1000 }}>You're mental</h3>
-    <h3 class="mental" transition:fly={{ y: 100, delay: 1500 }}>I'm mental</h3>
-    <h2 class="mental" style:font-weight={800} transition:fly={{ y: 100, delay: 2000 }}>Math's mental</h2>
+    <h1 id="title" class="mental" transition:slide={{duration:2000, easing: cubicInOut}}>MENTAL</h1><br><br>
+    <h3 class="mental" transition:fly={{ y: 100, delay: 2000 }}>You're mental</h3>
+    <h3 class="mental" transition:fly={{ y: 100, delay: 3000 }}>I'm mental</h3>
+    <h2 class="mental" style:font-weight={800} transition:fly={{ y: 100, delay: 4500 }}>Math is mental</h2>
 {/if}
-{#if toggle2}
-    <div id="panel" transition:fly={{y:300}}>
-
+{#if toggle}
+    <div id="panel" transition:fly={{y:300, delay: 6500}}>
+        <br><br><br><br>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <button onclick={() => {window.location.href = base + "/onedigit"}}>1</button>
+                    </td>
+                    <td>
+                        <button>2</button>
+                    </td>
+                    <td>
+                        <button>3</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table><br>
+        <h1 style:font-weight={900} style:font-size=100px>DIGITS</h1>
     </div>
 {/if}

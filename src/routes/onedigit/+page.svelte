@@ -1,38 +1,73 @@
 <script>
+    import { base } from "$app/paths";
+
     import { onMount } from "svelte";
     import { fly, slide } from "svelte/transition";
 
     let toggle = $state(false);
 
+    let sign = $state("+");
+    let signNum = ((Math.random() * 10) + 1);
+    let factor = $state(1);
+    signNum = Math.floor(signNum);
+    //console.log(signNum);
+    if (signNum%2 == 0) {
+        sign = "-";
+        factor = -1;
+    }
+    let n1 = $state(0);
+    let n2 = $state(0);
+
+    let num = ((Math.random() * 9) + 1);
+    num = Math.floor(num);
+    n1 = num;
+    num = ((Math.random() * 9) + 1);
+    num = Math.floor(num);
+    n2 = num;
+
+    let feedback = $state(false);
+    let result = $derived(n1+n2*factor);
+    let answer = $state();
+    let wrong = $state(true);
+
+    function submitAns() {
+        if (result == answer) {
+            wrong = false;
+            window.location.href = base + "/onedigit";
+        }
+        else {
+            feedback = true;
+            wrong = true;
+        }
+    }
+
+    let countdown = $state(6);
+
     onMount(function() {
       setTimeout(function() {toggle = true}, 100);  
+      sessionStorage.setItem("one");
+    })
+
+    onMount(function() {
+        setInterval(function() {
+            if (wrong) {
+                countdown--;
+            }
+            if (countdown <= 0) {
+                window.location.href = base + "/fail";
+                countdown = 0;
+            }
+        }, 1000);
     })
 </script>
 <style>
     h1 {
         font-weight: 900;
         font-size: 80px;
-        animation: flash 2s infinite;
         user-select: none;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
-    }
-    .mental {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-    }
-    @keyframes flash {
-        0% {
-            color: black;
-        }
-        50% {
-            color: purple;
-        }
-        100% {
-            color: black;
-        }
     }
 
     #panel {
@@ -42,15 +77,43 @@
         bottom: 0;
         right: 0;
         left: 0;
-        height: 75%;
+        height: 65%;
         border-top-right-radius: 20px;
         border-top-left-radius: 20px;
     }
+
+    form {
+        text-align: center;
+        font-size: 60px;
+        input {
+            width: 200px;
+            font-family: Montserrat;
+            font-weight: 900;
+            text-align: center;
+        }
+    }
 </style>
 
-<h1 transition:slide>MENTAL</h1>
+<h1 transition:slide>ONE DIGIT</h1>
+<h3>Complete each question within 5 seconds</h3>
+<br>
+<h2>{countdown} seconds remain</h2>
+<br>
+<h2><button onclick={() => {window.location.href = base}}>Exit</button></h2>
 {#if toggle}
     <div id="panel" transition:fly={{y:300}}>
-
+        <br><br><br>
+        <h1><span style:opacity={0} style:font-weight=600px>{sign}</span> {n1}</h1>
+        <h1>{sign} {n2}</h1>
+        <h3>___________</h3>
+        <br>
+        <form id="answer" preventDefault={submitAns}>
+            <input type="number" bind:value={answer} placeholder=0 max=18 min=-18/><br>
+            <button type="submit" onclick={submitAns}>Submit</button>
+        </form>
+        <br>
+        {#if feedback}
+            <h3>Wrong answer, try again!</h3>
+        {/if}
     </div>
 {/if}
