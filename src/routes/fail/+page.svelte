@@ -54,12 +54,12 @@
 <h3>{typeLabel}-digit mode</h3><br>
 <h3>------------------------------------------</h3>
 <br>
-<h2>Highest Streak for {typeLabel}-Digit mode</h2>
+<h3>Highest Streak for {typeLabel}-Digit mode</h3>
 <h1 style:font-size=70px>{highestStreak} problems</h1>
 <br>
 {#if congrats}
-    <h3>Great job beating your streak!</h3>
+    <h2>Great job beating your streak!</h2>
 {:else}
-    <h3>Better luck next time</h3>
+    <h2>Better luck next time</h2>
 {/if}
 

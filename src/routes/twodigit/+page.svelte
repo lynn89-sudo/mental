@@ -67,7 +67,7 @@
 <style>
     h1 {
         font-weight: 900;
-        font-size: 80px;
+        font-size: 60px;
         user-select: none;
         -webkit-user-select: none;
         -moz-user-select: none;

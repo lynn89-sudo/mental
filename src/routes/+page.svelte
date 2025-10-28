@@ -26,7 +26,6 @@
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
-        animation: title 2s infinite;
     }
 
     .mental {
@@ -91,12 +90,12 @@
                         <button onclick={() => {sessionStorage.setItem("streak", 0); window.location.href = base + "/twodigit";}}>2</button>
                     </td>
                     <td>
-                        <button>3</button>
+                        <button onclick={() => {sessionStorage.setItem("streak", 0); window.location.href = base + "/threedigit";}}>3</button>
                     </td>
                 </tr>
             </tbody>
         </table><br>
         <h1 style:font-weight={900} style:font-size=100px>DIGITS</h1>
-        <h3>Choose the mode of mental math you want. All problems are addition or subtraction with the set amount of digits in each number</h3>
+        <h3 style:padding-left=20px style:padding-right=20px>Choose the mode of mental math you want. All problems are addition or subtraction with the set amount of digits in each number</h3>
     </div>
 {/if}
