@@ -79,16 +79,16 @@
     <h2 class="mental" style:font-weight={800} transition:fly={{ y: 100, delay: 4500 }}>Math is mental</h2>
 {/if}
 {#if toggle}
-    <div id="panel" transition:fly={{y:300, delay: 6500}}>
-        <br><br><br><br>
+    <div id="panel" transition:fly={{y:1000, delay: 6500}}>
+        <br><br><br><br> <br><br><br><br>
         <table>
             <tbody>
                 <tr>
                     <td>
-                        <button onclick={() => {window.location.href = base + "/onedigit"}}>1</button>
+                        <button onclick={() => {sessionStorage.setItem("streak", 0); window.location.href = base + "/onedigit";}}>1</button>
                     </td>
                     <td>
-                        <button>2</button>
+                        <button onclick={() => {sessionStorage.setItem("streak", 0); window.location.href = base + "/twodigit";}}>2</button>
                     </td>
                     <td>
                         <button>3</button>
@@ -97,5 +97,6 @@
             </tbody>
         </table><br>
         <h1 style:font-weight={900} style:font-size=100px>DIGITS</h1>
+        <h3>Choose the mode of mental math you want. All problems are addition or subtraction with the set amount of digits in each number</h3>
     </div>
 {/if}

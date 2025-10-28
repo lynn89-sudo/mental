@@ -19,10 +19,10 @@
     let n1 = $state(0);
     let n2 = $state(0);
 
-    let num = ((Math.random() * 9) + 1);
+    let num = ((Math.random() * 999) + 1);
     num = Math.floor(num);
     n1 = num;
-    num = ((Math.random() * 9) + 1);
+    num = ((Math.random() * 999) + 1);
     num = Math.floor(num);
     n2 = num;
 
@@ -34,9 +34,9 @@
     function submitAns() {
         if (result == answer && wrong) {
             wrong = false;
+            feedback = false;
             sessionStorage.setItem("streak", parseInt(sessionStorage.getItem("streak")) + 1)
-            console.log("added 1")
-            window.location.href = base + "/onedigit";
+            window.location.href = base + "/threedigit";
         }
         else {
             feedback = true;
@@ -45,11 +45,11 @@
         }
     }
 
-    let countdown = $state(4);
+    let countdown = $state(16);
 
     onMount(function() {
       setTimeout(function() {toggle = true}, 100);  
-      sessionStorage.setItem("mode", "one");
+      sessionStorage.setItem("mode", "two");
     })
 
     onMount(function() {
@@ -98,8 +98,8 @@
     }
 </style>
 
-<h1 transition:slide>ONE DIGIT</h1>
-<h3>Complete each question within 3 seconds</h3>
+<h1 transition:slide>THREE DIGIT</h1>
+<h3>Complete each question within 15 seconds</h3>
 <br>
 <h2>{countdown} seconds remain</h2>
 <br>
@@ -112,7 +112,7 @@
         <h3>___________</h3>
         <br>
         <form id="answer" onsubmit={() => {event.preventDefault(); submitAns();}}>
-            <input type="number" bind:value={answer} placeholder=0 max=18 min=-18/><br>
+            <input type="number" bind:value={answer} placeholder=0 max=1998 min=-1998/><br>
             <button type="submit" onclick={submitAns}>Submit</button>
         </form>
         <br>
