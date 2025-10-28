@@ -64,6 +64,9 @@
         }, 1000);
     })
 </script>
+<svelte:head>
+    <title>Mental - 2 Digit Mode</title>
+</svelte:head>
 <style>
     h1 {
         font-weight: 900;

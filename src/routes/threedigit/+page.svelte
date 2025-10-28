@@ -49,7 +49,7 @@
 
     onMount(function() {
       setTimeout(function() {toggle = true}, 100);  
-      sessionStorage.setItem("mode", "two");
+      sessionStorage.setItem("mode", "three");
     })
 
     onMount(function() {
@@ -64,6 +64,9 @@
         }, 1000);
     })
 </script>
+<svelte:head>
+    <title>Mental - 3 Digit Mode</title>
+</svelte:head>
 <style>
     h1 {
         font-weight: 900;

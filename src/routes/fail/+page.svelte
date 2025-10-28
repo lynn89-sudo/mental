@@ -32,10 +32,22 @@
                 congrats = true;
             }
         }
+        if (trial === "three") {
+            typeLabel = "Three";
+            highestStreak = localStorage.getItem("threeStreak");
+            if (streak > highestStreak) {
+                highestStreak = streak;
+                localStorage.setItem("threeStreak", highestStreak)
+                congrats = true;
+            }
+        }
         sessionStorage.removeItem("streak");
         sessionStorage.removeItem("mode")
     })
 </script>
+<svelte:head>
+    <title>Mental - End of Round</title>
+</svelte:head>
 <style>
     h1 {
         font-weight: 900;

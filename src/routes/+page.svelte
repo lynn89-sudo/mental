@@ -18,6 +18,9 @@
       }
     })
 </script>
+<svelte:head>
+    <title>Mental</title>
+</svelte:head>
 <style>
     #title {
         font-weight: 900;
@@ -95,7 +98,7 @@
                 </tr>
             </tbody>
         </table><br>
-        <h1 style:font-weight={900} style:font-size=100px>DIGITS</h1>
-        <h3 style:padding-left=20px style:padding-right=20px>Choose the mode of mental math you want. All problems are addition or subtraction with the set amount of digits in each number</h3>
+        <h1 class="mental" style:font-weight={900} style:font-size=100px>DIGITS</h1>
+        <h3 class="mental" style:padding-left=20px style:padding-right=20px>Choose the mode of mental math you want. All problems are addition or subtraction with the set amount of digits in each number</h3>
     </div>
 {/if}
