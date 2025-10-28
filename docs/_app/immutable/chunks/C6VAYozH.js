@@ -1,0 +1,1 @@
+import{d as c,h as _,e as d,E as o,f as E,H as T,s as b,i as y,B as g,j as f}from"./CypcXFM3.js";function v(t,i,h=!1){_&&d();var r=new g(t),u=h?o:0;function n(a,s){if(_){const l=E(t)===T;if(a===l){var e=b();y(e),r.anchor=e,f(!1),r.ensure(a,s),f(!0);return}}r.ensure(a,s)}c(()=>{var a=!1;i((s,e=!0)=>{a=!0,n(e,s)}),a||n(!1,null)},u)}export{v as i};
