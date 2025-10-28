@@ -29,6 +29,11 @@
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
+
+        position: absolute;
+        top: 8%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .mental {
@@ -75,7 +80,7 @@
 </style>
 
 {#if toggle} 
-    <h1 id="title" class="mental" transition:slide={{duration:2000, easing: cubicInOut}}>MENTAL</h1><br><br>
+    <h1 id="title" class="mental" transition:slide={{duration:2000, easing: cubicInOut}}>MENTAL</h1><br><br><br><br>
     <h3 class="mental" transition:fly={{ y: 100, delay: 2000 }}>You're mental</h3>
     <h3 class="mental" transition:fly={{ y: 100, delay: 3000 }}>I'm mental</h3>
     <h2 class="mental" style:font-weight={800} transition:fly={{ y: 100, delay: 4500 }}>Math is mental</h2>

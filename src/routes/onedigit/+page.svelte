@@ -47,8 +47,10 @@
 
     let countdown = $state(4);
 
+    let inputTEXT = $state();
     onMount(function() {
       setTimeout(function() {toggle = true}, 100);  
+      setTimeout(function() {inputTEXT.focus(); inputTEXT.select();}, 700)
       sessionStorage.setItem("mode", "one");
     })
 
@@ -115,7 +117,7 @@
         <h3>___________</h3>
         <br>
         <form id="answer" onsubmit={() => {event.preventDefault(); submitAns();}}>
-            <input type="number" bind:value={answer} placeholder=0 max=18 min=-18/><br>
+            <input bind:this={inputTEXT} type="number" bind:value={answer} placeholder=0 max=18 min=-18/><br>
             <button type="submit" onclick={submitAns}>Submit</button>
         </form>
         <br>
