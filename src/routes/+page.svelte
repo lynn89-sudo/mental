@@ -80,13 +80,13 @@
 </style>
 
 {#if toggle} 
-    <h1 id="title" class="mental" transition:slide={{duration:2000, easing: cubicInOut}}>MENTAL</h1><br><br><br><br>
-    <h3 class="mental" transition:fly={{ y: 100, delay: 2000 }}>You're mental</h3>
-    <h3 class="mental" transition:fly={{ y: 100, delay: 3000 }}>I'm mental</h3>
-    <h2 class="mental" style:font-weight={800} transition:fly={{ y: 100, delay: 4500 }}>Math is mental</h2>
+    <h1 id="title" class="mental" transition:slide={{duration:2000, easing: cubicInOut, delay: 5000}}>MENTAL</h1><br><br><br><br>
+    <h3 class="mental" transition:fly={{ y: 100, delay: 1000 }}>You're mental</h3>
+    <h3 class="mental" transition:fly={{ y: 100, delay: 2000 }}>I'm mental</h3>
+    <h2 class="mental" style:font-weight={800} transition:fly={{ y: 100, delay: 3500 }}>Math is mental</h2>
 {/if}
 {#if toggle}
-    <div id="panel" transition:fly={{y:1000, delay: 6500}}>
+    <div id="panel" transition:fly={{y:1000, delay: 7000}}>
         <br><br><br><br> <br><br><br><br>
         <table>
             <tbody>
